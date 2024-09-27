@@ -6,6 +6,7 @@ initViewer(document.getElementById('preview')).then(viewer => {
     if (urn != "") {
         console.log("here");
         console.log(urn);
+        setupModelSelection(viewer, urn);
         onModelSelected(viewer, urn);
     }
     else {
