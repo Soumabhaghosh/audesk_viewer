@@ -6,12 +6,12 @@ initViewer(document.getElementById('preview')).then(viewer => {
     if (urn != "") {
         console.log("here");
         console.log(urn);
-        setupModelSelection(viewer, urn);
+        
         onModelSelected(viewer, urn);
     } 
     else {
         console.log("here we go");
-        setupModelSelection(viewer, urn);
+        setupModelSelection(viewer);
     }
     // console.log(urn);
     // setupModelSelection(viewer, urn);
@@ -40,7 +40,52 @@ async function setupModelSelection(viewer, selectedUrn) {
         }
     }
     else{
-        document.getElementById('preview').innerText="please LOgin"
+        document.getElementById('preview').innerHTML=`
+        <html>
+    <style>
+       
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .login-message {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-message h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .login-message p {
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+       
+    </style>
+
+
+    <div class="container">
+        <div class="login-message">
+            <h1>Please Login</h1>
+            <p>You must be logged in to see all the models</p>
+            
+        </div>
+    </div>
+
+    
+</html>
+`
+   
         
     }
 
