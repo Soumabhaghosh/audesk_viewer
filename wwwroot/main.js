@@ -8,7 +8,7 @@ initViewer(document.getElementById('preview')).then(viewer => {
         console.log(urn);
         setupModelSelection(viewer, urn);
         onModelSelected(viewer, urn);
-    }
+    } 
     else {
         console.log("here");
         setupModelSelection(viewer, urn);
@@ -20,7 +20,7 @@ initViewer(document.getElementById('preview')).then(viewer => {
 
 async function setupModelSelection(viewer, selectedUrn) {
     const dropdown = document.getElementById('models');
-    if (dropdown != null) {
+    if (dropdown != "") {
         dropdown.innerHTML = '';
         try {
             const resp = await fetch('/api/models');
