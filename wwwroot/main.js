@@ -10,17 +10,17 @@ initViewer(document.getElementById('preview')).then(viewer => {
         onModelSelected(viewer, urn);
     } 
     else {
-        console.log("here");
+        console.log("here we go");
         setupModelSelection(viewer, urn);
     }
     // console.log(urn);
     // setupModelSelection(viewer, urn);
-    setupModelUpload(viewer);
+    // setupModelUpload(viewer);
 });
 
 async function setupModelSelection(viewer, selectedUrn) {
     const dropdown = document.getElementById('models');
-    if (dropdown != "") {
+    if (dropdown) {
         dropdown.innerHTML = '';
         try {
             const resp = await fetch('/api/models');
@@ -40,7 +40,8 @@ async function setupModelSelection(viewer, selectedUrn) {
         }
     }
     else{
-        document.getElementById('preview').innerHTML="Please Login"
+        document.getElementById('preview').innerText="please LOgin"
+        
     }
 
 }
