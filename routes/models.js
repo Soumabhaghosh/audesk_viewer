@@ -85,6 +85,7 @@ router.get('/',(req,res)=>{
     </div>
     <div id="preview"></div>
     <div id="overlay"></div>
+    <div id="loggedin" style="display:none">true</div>
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.js"></script>
     <script src="/main.js" type="module"></script>
 </body>
@@ -128,6 +129,7 @@ router.get('/',(req,res)=>{
     </div>
     <div id="preview"></div>
     <div id="overlay"></div>
+    
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.js"></script>
     <script src="/main.js" type="module"></script>
     <script>

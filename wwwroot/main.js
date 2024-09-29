@@ -3,43 +3,15 @@ import { initViewer, loadModel } from './viewer.js';
 initViewer(document.getElementById('preview')).then(viewer => {
     const urn = window.location.hash?.substring(1);
     // setupModelSelection(viewer, urn);
-    if (urn != "") {
+    if (urn != "" && !document.getElementById("loggedin")) {
         console.log("here");
         console.log(urn);
-        
         onModelSelected(viewer, urn);
+        
     } 
-    else {
+    
+    else if(urn=="" && !document.getElementById("loggedin")) {
         console.log("here we go");
-        setupModelSelection(viewer);
-    }
-    // console.log(urn);
-    // setupModelSelection(viewer, urn);
-    // setupModelUpload(viewer);
-});
-
-async function setupModelSelection(viewer, selectedUrn) {
-    const dropdown = document.getElementById('models');
-    if (dropdown) {
-        dropdown.innerHTML = '';
-        try {
-            const resp = await fetch('/api/models');
-            if (!resp.ok) {
-                throw new Error(await resp.text());
-            }
-            const models = await resp.json();
-            dropdown.innerHTML = models.map(model => `<option value=${model.urn} ${model.urn === selectedUrn ? 'selected' : ''}>${model.name}</option>`).join('\n');
-            dropdown.onchange = () => onModelSelected(viewer, dropdown.value);
-            if (dropdown.value) {
-                console.log(dropdown.value);
-                onModelSelected(viewer, dropdown.value);
-            }
-        } catch (err) {
-            alert('Could not list models. See the console for more details.');
-            console.error(err);
-        }
-    }
-    else{
         document.getElementById('preview').innerHTML=`
         <html>
     <style>
@@ -77,7 +49,7 @@ async function setupModelSelection(viewer, selectedUrn) {
     <div class="container">
         <div class="login-message">
             <h1>Please Login</h1>
-            <p>You must be logged in to see all the models</p>
+            <p>You must be logged in to see all the model</p>
             
         </div>
     </div>
@@ -85,9 +57,41 @@ async function setupModelSelection(viewer, selectedUrn) {
     
 </html>
 `
-   
-        
     }
+    
+    else if(document.getElementById("loggedin").innerHTML=="true" && urn==""){
+        setupModelSelection(viewer);
+        setupModelUpload(viewer)
+
+    }
+    else if(document.getElementById("loggedin").innerHTML=="true" && urn!=""){
+        setupModelSelection(viewer,urn);
+        setupModelUpload(viewer)
+    }
+});
+
+async function setupModelSelection(viewer, selectedUrn) {
+    const dropdown = document.getElementById('models');
+    if (dropdown) {
+        dropdown.innerHTML = '';
+        try {
+            const resp = await fetch('/api/models');
+            if (!resp.ok) {
+                throw new Error(await resp.text());
+            }
+            const models = await resp.json();
+            dropdown.innerHTML = models.map(model => `<option value=${model.urn} ${model.urn === selectedUrn ? 'selected' : ''}>${model.name}</option>`).join('\n');
+            dropdown.onchange = () => onModelSelected(viewer, dropdown.value);
+            if (dropdown.value) {
+                console.log(dropdown.value);
+                onModelSelected(viewer, dropdown.value);
+            }
+        } catch (err) {
+            alert('Could not list models. See the console for more details.');
+            console.error(err);
+        }
+    }
+  
 
 }
 
