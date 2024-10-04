@@ -9,7 +9,7 @@ app.use(session({
     resave: false, // Don't save session if unmodified
     saveUninitialized: false, // Save uninitialized sessions
     cookie: {
-        maxAge: 3600000*24, // 1 hour in milliseconds
+        maxAge: 3600000*24, // 1 day in milliseconds
         httpOnly:true
     }
 }));

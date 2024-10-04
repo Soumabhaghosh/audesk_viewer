@@ -7,65 +7,51 @@ initViewer(document.getElementById('preview')).then(viewer => {
         console.log("here");
         console.log(urn);
         onModelSelected(viewer, urn);
-        
-    } 
-    
-    else if(urn=="" && !document.getElementById("loggedin")) {
+
+    }
+
+    else if (urn == "" && !document.getElementById("loggedin")) {
         console.log("here we go");
-        document.getElementById('preview').innerHTML=`
+        document.getElementById('preview').innerHTML = `
         <html>
     <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden; /* Prevents vertical scrollbar */
+    }
        
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-        }
-
-        .login-message {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .login-message h1 {
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-
-        .login-message p {
-            margin-bottom: 30px;
-            font-size: 1.2em;
-        }
+      .responsive-img {
+ width: 100%;
+      height: 100vh;    /* Full viewport height */
+      object-fit: cover; /* Ensures image covers entire area */
+}
+            
 
        
     </style>
 
-
-    <div class="container">
-        <div class="login-message">
-            <h1>Please Login</h1>
-            <p>You must be logged in to see all the model</p>
-            
-        </div>
-    </div>
+        <img src="remember.png" alt="Description of image" class="responsive-img">
+   
 
     
 </html>
 `
     }
-    
-    else if(document.getElementById("loggedin").innerHTML=="true" && urn==""){
+
+    else if (document.getElementById("loggedin").innerHTML == "true" && urn == "") {
         setupModelSelection(viewer);
         setupModelUpload(viewer)
 
     }
-    else if(document.getElementById("loggedin").innerHTML=="true" && urn!=""){
-        setupModelSelection(viewer,urn);
+    else if (document.getElementById("loggedin").innerHTML == "true" && urn != "") {
+        setupModelSelection(viewer, urn);
         setupModelUpload(viewer)
     }
 });
@@ -91,7 +77,7 @@ async function setupModelSelection(viewer, selectedUrn) {
             console.error(err);
         }
     }
-  
+//<li><a class="dropdown-item" href="#">Help</a></li>
 
 }
 
@@ -147,6 +133,8 @@ async function onModelSelected(viewer, urn) {
                 showNotification(`Model has not been translated.`);
                 break;
             case 'inprogress':
+                console.log(status.progress);
+                
                 showNotification(`Model is being translated (${status.progress})...`);
                 window.onModelSelectedTimeout = setTimeout(onModelSelected, 5000, viewer, urn);
                 break;

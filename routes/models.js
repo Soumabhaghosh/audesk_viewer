@@ -71,23 +71,74 @@ router.get('/',(req,res)=>{
     <link rel="icon" type="image/x-icon" href="https://cdn.autodesk.io/favicon.ico">
     <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.css">
     <link rel="stylesheet" href="/main.css">
-    <title>Autodesk Platform Services: Simple Viewer</title>
+    <title>!!!</title>
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="header">
-        <img class="logo" src="https://cdn.autodesk.io/logo/black/stacked.png" alt="Autodesk Platform Services">
+    <!-- <div id="header">
+        <img class="logo" src="" alt="Autodesk Platform Services">
         <span class="title">Hello ${req.session.user.name} welcome to your Simple Viewer</span>
         <select name="models" id="models"></select>
         <button id="upload" title="Upload New Model">Upload</button>
         <input style="display: none" type="file" id="input">
         <a href="/logout"><button>Logout</button></a>
     </div>
+    -->
+
+   <!-- <nav class="navbar">
+        <div class="logo">MyLogo</div>
+        <span class="title">Hello ${req.session.user.name} welcome to your Simple Viewer</span>
+        <select name="models" id="models"></select>
+        <button id="upload" title="Upload New Model">Upload</button>
+        <input style="display: none" type="file" id="input">
+        <a href="/logout"><button>Logout</button></a>
+
+    </nav>
+
+    -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <img src="TRISHITA.png" alt="MyLogo" style="height: 35px;">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+
+        <!-- Upload Icon -->
+        <button id="upload" title="Upload New Model">
+          <li class="nav-item">
+            <i class="bi bi-upload"></i> Upload
+            <input style="display: none" type="file" id="input">
+          </li>
+        </button>
+
+          <!-- Dropdown Menu -->
+          <select name="models" id="models"></select>
+          <!-- Logout Icon -->
+          <button id="logout">
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </a>
+          </li>
+          </button>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
     <div id="preview"></div>
     <div id="overlay"></div>
     <div id="loggedin" style="display:none">true</div>
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.js"></script>
     <script src="/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
@@ -101,60 +152,225 @@ router.get('/',(req,res)=>{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/x-icon" href="https://cdn.autodesk.io/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="2.jpeg">
     <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.css">
     <link rel="stylesheet" href="/main.css">
-    <title>Autodesk Platform Services: Simple Viewer</title>
- 
+    <title>Trishita:Smart-Connect</title>
 </head>
 
+
 <body>
-    <div id="header">
-        <img class="logo" src="https://cdn.autodesk.io/logo/black/stacked.png" alt="Autodesk Platform Services">
+    <!--<div id="header">
+       <img class="logo" src="" alt="Autodesk Platform Services">
         <span class="title">Simple Viewer</span>
     
-    <button class="login-btn" onclick="openModal()">LOGIN</button>
-    
-    <div id="loginModal" class="modal" >
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Login</h2>
-            <form action="/login" method="POST">
-                <input type="text" placeholder="Username" name="username" required>
-                <input type="password" placeholder="Password" name="password" required>
-                <button type="submit" class="submit-btn">Login</button>
-            </form>
+        <a href="/login" class="button">Click me</a>
+    </div>
+    -->
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="TRISHITA.png" alt="MyLogo" style="height: 35px;">
         </div>
-    </div>
-    </div>
+        <a href="/login" ><button class="login-btn" >Enter</button></a>
+    </nav>
+
     <div id="preview"></div>
     <div id="overlay"></div>
     
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.js"></script>
     <script src="/main.js" type="module"></script>
-    <script>
-             // Open the modal
-        function openModal() {
-            document.getElementById('loginModal').style.display = 'flex';
-        }
-
-        // Close the modal
-        function closeModal() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        // Close modal if clicked outside content
-        window.onclick = function(event) {
-            const modal = document.getElementById('loginModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
+    
 </body>
+
 
 </html>
 `)
+
+router.get('/login',(req,res)=>{
+
+    if(req.session.user){
+        res.redirect("/")
+    }
+    else{
+
+        res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trisita Smart-Connect</title>
+    <link rel="icon" type="image/x-icon" href="2.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.background {
+    height: 100vh;
+    background-image: url('23324.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height:342px;
+    width:360px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+h1 span {
+    font-weight: bold;
+}
+
+
+
+.button {
+    width: 100%; /* Ensure buttons take full width of the container */
+    max-width: 200px; /* Set a max-width for the buttons */
+    padding: 13px 20px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    margin:33px;
+}
+    span{
+     margin:10px;
+    }
+
+.button:hover {
+    background-color: #0056b3;
+}
+.button1{
+
+ width: 100%; /* Ensure buttons take full width of the container */
+    max-width: 200px; /* Set a max-width for the buttons */
+    padding: 10px 20px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+
+}
+
+.button1:hover{
+        background-color: #0056b3;
+}
+
+#login-form {
+    margin-top: 20px;
+    
+}
+
+#login-form input {
+    width: 100%;
+
+    display:flex;
+    flex-direction:column;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#login-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    
+}
+
+
+.hidden {
+    display: none;
+}
+
+#createAccountBtn{
+            width: 100%; /* Ensure buttons take full width of the container */
+    max-width: 200px; /* Set a max-width for the buttons */
+    padding: 13px 20px;
+    background-color: #7b7e81;
+    border: none;
+    color: white;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    margin:33px;
+}
+
+#createAccountBtn:hover{
+             background-color: #404447;
+}
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="login-box">
+            <img src="TRISHITA.png" style="height: 30px;"> <h1><div>Smart-Connect</div></h1>
+            <div id="login-options">
+                
+                <button id="signInBtn" class="button">Sign In</button>
+                
+                <button id="createAccountBtn" class="button">Create Account</button>
+            </div>
+
+            <div id="login-form" class="hidden">
+                <form action="/login" method="POST">
+                    <label>Username:</label>
+                    <input id="email" name="username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit" class="button1">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById("signInBtn").addEventListener("click", function() {
+    document.getElementById("login-options").classList.add("hidden");
+    document.getElementById("login-form").classList.remove("hidden");
+});
+
+    </script>
+</body>
+</html>
+`)
+
+    }
+
+})
+
+
     }
     
 })
@@ -204,6 +420,8 @@ async function  authenticateUser(username, password) {
 // Login route
 router.post('/login',async  (req, res) => {
     const { username, password } = req.body;
+    console.log(username,password);
+    
     if (await authenticateUser(username,password)) {
         // Create session if credentials are correct
         console.log(req.query.hash);
