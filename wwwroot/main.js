@@ -37,7 +37,7 @@ initViewer(document.getElementById('preview')).then(viewer => {
        
     </style>
 
-        <img src="remember.png" alt="Description of image" class="responsive-img">
+        <img src="/pictures/remember.png" alt="Description of image" class="responsive-img">
         
 
     
