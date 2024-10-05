@@ -11,6 +11,7 @@ class HistogramExtension extends BaseExtension {
         this._pieChartButton = null;
         this._barChartPanel = null;
         this._pieChartPanel = null;
+        this._shareButton = null;
     }
 
     async load() {
@@ -55,6 +56,9 @@ class HistogramExtension extends BaseExtension {
                 this._pieChartPanel.setModel(this.viewer.model);
             }
         };
+
+       
+
     }
 
     onModelLoaded(model) {

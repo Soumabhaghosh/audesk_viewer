@@ -30,7 +30,7 @@ export class BaseExtension extends Autodesk.Viewing.Extension {
 
     findLeafNodes(model) {
         return new Promise(function (resolve, reject) {
-            model.getObjectTree(function (tree) {
+            model.getObjectTree(function (tree) { 
                 let leaves = [];
                 tree.enumNodeChildren(tree.getRootId(), function (dbid) {
                     if (tree.getChildCount(dbid) === 0) {

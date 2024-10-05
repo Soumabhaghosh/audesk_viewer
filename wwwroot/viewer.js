@@ -4,6 +4,7 @@ import './extensions/LoggerExtension.js';
 import './extensions/SummaryExtension.js';
 import './extensions/DataGridExtension.js';
 import './extensions/HistogramExtension.js';
+import './extensions/ShareExtension.js'
 
 async function getAccessToken(callback) {
     try {
@@ -28,7 +29,8 @@ export function initViewer(container) {
                     'LoggerExtension',
                     'SummaryExtension',
                     'DataGridExtension',
-                    'HistogramExtension'
+                    'HistogramExtension',
+                    'ShareExtension'
                     
                 ]
             };
