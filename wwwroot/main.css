@@ -6,7 +6,7 @@ body, html {
 }
 
 #header, #preview, #overlay {
-    position: absolute;
+    position:absolute;
     width: 100%;
 }
 form {
@@ -24,9 +24,10 @@ form {
 }
 
 #preview, #overlay {
-    top: 4em;
+    top: 4.9em;
     bottom: 0;
     margin-top: -15px;
+    position: absolute;
 }
 
 #overlay {
@@ -65,21 +66,22 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
+    padding: 10px 20px;
     background-color: #faf4f4;
   
   }
 
   /* Logo Styling */
-  .navbar .logo {
+  .navbar {
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    background-color: #ced0d1;
+   
   }
 
   /* Login Button Styling */
   .login-btn {
-    background-color: #485248;
+    background-color: #007BFF;
     border: none;
     color: white;
     padding: 7px 20px;
@@ -89,16 +91,24 @@ form {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    margin-left: 8px;
+    margin-right: 8px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: box-shadow 0.3s ease;
   }
 
   .navbar .login-btn:hover {
-    background-color: #45a049;
+    background-color: #03468d;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.4);
   }
 
   /* Responsive */
   @media (max-width: 768px) {
     .navbar {
-      flex-direction: column;
+      flex-direction: row;
+    }
+    #preview{
+      top:10em;
     }
   }
 
@@ -109,11 +119,63 @@ form {
     border: none;
 }
 #logout{
-    
+    height: 40px;
+    width: 60px;
     border:none;
+    border-radius: 20px;
     
 }
 
 
+.forge-spinner img{
+  display: none !important;
+}
 
+.custom-select {
+  background-color: #f2f2f2;  /* Light background */
+  border: 1px solid #ccc;     /* Light border */
+  padding: 10px 15px;         /* Padding around the text */
+  font-size: 16px;            /* Text size */
+  border-radius: 5px;         /* Slightly rounded corners */
+  color: #333;                /* Text color */
+  cursor: pointer;            /* Pointer cursor on hover */
+  width: 200px;               /* Control the width */
+  height: 40px;               /* Control the height */
+}
 
+/* Add hover effect */
+.custom-select:hover {
+  border-color: #007bff;      /* Change border color on hover */
+}
+
+/* Styling for the options inside the select dropdown */
+.custom-select option {
+  padding: 10px;
+}
+
+.upload-modal {
+  background-image: url('your-background-image-url.jpg'); /* Set your background image */
+  background-size: cover;  /* Make the background cover the modal */
+  background-position: center; /* Center the background */
+  padding: 30px;  /* Add padding inside the modal */
+  color: white;   /* Ensure text is visible on the background */
+}
+
+/* Heading styling */
+.upload-modal h5 {
+  color: white;   /* Heading text color */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* File input styling */
+.custom-file-input {
+  width: 100%;
+  padding: 10px;
+}
+.custom-modal {
+  max-width: 800px !important; /* Increase this value to make it larger */
+  width: 100% !important;      /* Ensures it can take full width up to the max-width */
+  height: 100%!important;
+  max-height: 600px!important;
+}

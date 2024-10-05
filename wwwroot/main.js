@@ -38,7 +38,7 @@ initViewer(document.getElementById('preview')).then(viewer => {
     </style>
 
         <img src="remember.png" alt="Description of image" class="responsive-img">
-   
+        
 
     
 </html>
@@ -48,6 +48,7 @@ initViewer(document.getElementById('preview')).then(viewer => {
     else if (document.getElementById("loggedin").innerHTML == "true" && urn == "") {
         setupModelSelection(viewer);
         setupModelUpload(viewer)
+        // document.getElementById('preview').innerHTML+=`<button>Share this model</button>`
 
     }
     else if (document.getElementById("loggedin").innerHTML == "true" && urn != "") {
@@ -85,8 +86,23 @@ async function setupModelUpload(viewer) {
     const upload = document.getElementById('upload');
     const input = document.getElementById('input');
     const models = document.getElementById('models');
-    upload.onclick = () => input.click();
-    input.onchange = async () => {
+   
+    
+    upload.onclick = async () => {
+        
+        setTimeout(() => {
+            const elements=document.getElementsByClassName('modal-backdrop');
+        const elementsArray = Array.from(elements); 
+        
+        // Loop through elements and remove each one
+        elementsArray.forEach(element => {
+            element.remove(); // Remove element from DOM
+        });
+        document.getElementById('uploadModal').style.display="none";
+            
+        }, 2000);
+        
+
         const file = input.files[0];
         let data = new FormData();
         data.append('model-file', file);
@@ -99,7 +115,7 @@ async function setupModelUpload(viewer) {
         showNotification(`Uploading model <em>${file.name}</em>. Do not reload the page.`);
         try {
             const resp = await fetch('/api/models', { method: 'POST', body: data });
-            if (!resp.ok) {
+            if (!resp.ok) { 
                 throw new Error(await resp.text());
             }
             const model = await resp.json();
@@ -112,6 +128,10 @@ async function setupModelUpload(viewer) {
             upload.removeAttribute('disabled');
             models.removeAttribute('disabled');
             input.value = '';
+            
+            
+
+            
         }
     };
 }
@@ -124,6 +144,8 @@ async function onModelSelected(viewer, urn) {
     window.location.hash = urn;
     try {
         const resp = await fetch(`/api/models/${urn}/status`);
+        console.log(resp);
+        
         if (!resp.ok) {
             throw new Error(await resp.text());
         }
@@ -163,3 +185,4 @@ function clearNotification() {
     overlay.innerHTML = '';
     overlay.style.display = 'none';
 }
+

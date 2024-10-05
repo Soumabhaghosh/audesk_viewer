@@ -68,14 +68,16 @@ router.get('/',(req,res)=>{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/x-icon" href="https://cdn.autodesk.io/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="2.jpeg">
     <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.css">
     <link rel="stylesheet" href="/main.css">
-    <title>!!!</title>
-    <!-- Bootstrap CSS -->
+    <title>Trishita:Smart-Connect</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+
+  </style>
 </head>
 
 <body>
@@ -83,6 +85,7 @@ router.get('/',(req,res)=>{
         <img class="logo" src="" alt="Autodesk Platform Services">
         <span class="title">Hello ${req.session.user.name} welcome to your Simple Viewer</span>
         <select name="models" id="models"></select>
+        
         <button id="upload" title="Upload New Model">Upload</button>
         <input style="display: none" type="file" id="input">
         <a href="/logout"><button>Logout</button></a>
@@ -101,35 +104,46 @@ router.get('/',(req,res)=>{
 
     -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar">
+    
     <div class="container-fluid">
-      <img src="TRISHITA.png" alt="MyLogo" style="height: 35px;">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+      
+            <img src="TRISHITA.png" alt="MyLogo" style="height: 35px;display:inline">
+            <div>
+            
 
-        <!-- Upload Icon -->
-        <button id="upload" title="Upload New Model">
-          <li class="nav-item">
-            <i class="bi bi-upload"></i> Upload
-            <input style="display: none" type="file" id="input">
-          </li>
-        </button>
+                <button type="button" class="login-btn" data-bs-toggle="modal" data-bs-target="#uploadModal" >
+                <i class="bi bi-upload"></i>
+    Upload
+  </button>
 
-          <!-- Dropdown Menu -->
-          <select name="models" id="models"></select>
-          <!-- Logout Icon -->
-          <button id="logout">
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">
-              <i class="bi bi-box-arrow-right"></i> Logout
-            </a>
-          </li>
-          </button>
-        </ul>
+  <!-- Modal Structure -->
+  <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+      <div class="modal-content custom-modal ">
+        <!-- Modal Body with background and file input -->
+        <div class="modal-body upload-modal">
+          <h5 id="uploadModalLabel">Upload Your File</h5>
+          <form>
+            <!-- File Input -->
+            <div class="mb-3">
+              <input class="form-control" type="file" id="input">
+            </div>
+          </form>
+        </div>
+        <!-- Modal Footer with buttons -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="upload" title="Upload New Model">Submit</button>
+        </div>
       </div>
+    </div>
+  </div>
+
+            </button>
+          <select name="models" id="models" class="custom-select"></select>
+           <button class="login-btn" onclick="redirectToLogin()"><i class="bi bi-box-arrow-right"></i> Logout</button>
+           </div>
     </div>
   </nav>
 
@@ -139,6 +153,11 @@ router.get('/',(req,res)=>{
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.js"></script>
     <script src="/main.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function redirectToLogin() {
+    window.location.href = "/logout";
+}
+    </script>
 </body>
 
 </html>
@@ -172,7 +191,7 @@ router.get('/',(req,res)=>{
         <div class="logo">
             <img src="TRISHITA.png" alt="MyLogo" style="height: 35px;">
         </div>
-        <a href="/login" ><button class="login-btn" >Enter</button></a>
+        <a href="/login" ><button class="login-btn" >Sign In</button></a>
     </nav>
 
     <div id="preview"></div>
@@ -228,8 +247,8 @@ body {
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    height:342px;
-    width:360px;
+    height:360px;
+    width:342px;
 }
 
 h1 {
@@ -256,6 +275,8 @@ h1 span {
     font-size: 1rem;
     text-align: center;
     margin:33px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: box-shadow 0.3s ease;
 }
     span{
      margin:10px;
@@ -263,6 +284,7 @@ h1 span {
 
 .button:hover {
     background-color: #0056b3;
+     box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.4);
 }
 .button1{
 
@@ -277,11 +299,15 @@ h1 span {
     cursor: pointer;
     font-size: 1rem;
     text-align: center;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: box-shadow 0.3s ease;
 
 }
 
 .button1:hover{
         background-color: #0056b3;
+         box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.4);
+
 }
 
 #login-form {
@@ -330,12 +356,14 @@ h1 span {
 #createAccountBtn:hover{
              background-color: #404447;
 }
+
+
     </style>
 </head>
 <body>
     <div class="background">
         <div class="login-box">
-            <img src="TRISHITA.png" style="height: 30px;"> <h1><div>Smart-Connect</div></h1>
+            <img src="TRISHITA.png" style="height: 40px;"> <h1><div>Smart-Connect</div></h1>
             <div id="login-options">
                 
                 <button id="signInBtn" class="button">Sign In</button>

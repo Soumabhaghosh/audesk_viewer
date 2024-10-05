@@ -29,6 +29,7 @@ export function initViewer(container) {
                     'SummaryExtension',
                     'DataGridExtension',
                     'HistogramExtension'
+                    
                 ]
             };
             const viewer = new Autodesk.Viewing.GuiViewer3D(container, config);
