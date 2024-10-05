@@ -11,7 +11,7 @@ body, html {
 }
 form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
 
 #header {
@@ -158,12 +158,12 @@ form {
   background-size: cover;  /* Make the background cover the modal */
   background-position: center; /* Center the background */
   padding: 30px;  /* Add padding inside the modal */
-  color: white;   /* Ensure text is visible on the background */
+  color: rgb(26, 25, 25);   /* Ensure text is visible on the background */
 }
 
 /* Heading styling */
 .upload-modal h5 {
-  color: white;   /* Heading text color */
+  color: rgb(245, 241, 241);   /* Heading text color */
   margin-bottom: 20px;
   text-align: center;
 }
@@ -178,4 +178,25 @@ form {
   width: 100% !important;      /* Ensures it can take full width up to the max-width */
   height: 100%!important;
   max-height: 600px!important;
+}
+
+.modal-body{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#upload-icon :hover{
+  cursor: pointer;
+
+}
+#upload-form{
+display: flex;
+flex-direction: row;
+}
+
+#supported-formats{
+  font-size: small;
+  margin-left:124px ;
+  font-weight: lighter;
+  
 }

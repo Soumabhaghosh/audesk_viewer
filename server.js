@@ -13,6 +13,8 @@ app.use(session({
         httpOnly:true
     }
 }));
+
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('wwwroot'));
 app.use(require('./routes/auth.js'));

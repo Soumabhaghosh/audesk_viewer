@@ -87,6 +87,8 @@ async function setupModelUpload(viewer) {
     const input = document.getElementById('input');
     const models = document.getElementById('models');
    
+    document.getElementById('upload-icon').onclick= () => input.click()
+   
     
     upload.onclick = async () => {
         
