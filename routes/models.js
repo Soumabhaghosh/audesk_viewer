@@ -87,7 +87,7 @@ router.get('/login', (req, res) => {
 // Login route
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    console.log(username, password);
+    
 
     if (await authenticateUser(username, password)) {
         // Create session if credentials are correct

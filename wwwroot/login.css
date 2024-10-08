@@ -10,7 +10,7 @@ body {
 
 .background {
     height: 100vh;
-    background-image: url('23324.jpg');
+    background-image: url('/pictures/23324.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
